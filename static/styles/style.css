@@ -1,0 +1,15 @@
+* {
+  max-width: 500px;
+  margin: auto;
+}
+h2,
+h3 {
+  text-align: center;
+}
+h3 {
+  margin-bottom: 5%;
+}
+
+#form1 {
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+
+
+        <title>Classifier</title>
+    </head>
+    <body>
+        
+            
+        <h2>Image Classification</h2>
+        <h3>Densenet121 Model </h3>
+        <p>
+            DenseNet (Dense Convolutional Network) is an architecture that focuses on making the deep learning networks go even deeper, but at the same time making them more efficient to train, by using shorter connections between the layers. 
+
+            Upload an Image and the pretrained Densenet121 model will predict the name with reference to the imagenet_class_index.json file provided.
+        </p>
+        <p>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </p>
+        <form id='form1' class="form-inline py-3" method = 'post' enctype=multipart/form-data>
+            <input type = "file" name = "file" class="form-control">
+            <input type="submit" name = 'submit_button' value = "predict" class="btn btn-primary">
+        </form>
+
+        </div>
+        <!-- <p>{{ value }}</p> -->
+        {%if prediction%}
+        <h2>Predicted image is a {{prediction}} </h2>
+        {% endif %}
+        {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+        {% endif %}
+
+        
+   
+    </body>
+</html>
